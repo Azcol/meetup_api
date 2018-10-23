@@ -696,6 +696,12 @@
       "type" : "integer",
       "format" : "int64"
     },
+    "name" : {
+      "type" : "string"
+    },
+    "description" : {
+      "type" : "string"
+    },
     "xml" : {
       "type" : "object"
     }
@@ -992,7 +998,7 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - Данные пользователя получены </h3>
+                            <h3> Status: 200 - Список доступных встреч получен </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -1007,7 +1013,7 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Данные пользователя получены",
+  "description" : "Список доступных встреч получен",
   "content" : {
     "application/json" : {
       "schema" : {
