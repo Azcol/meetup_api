@@ -31,12 +31,12 @@ API реализует функции создание, удаление и из
 - __POST__ `/user/register`
 - __POST__ `/user/login`
 - __GET__|__POST__ `/user/logout`
-- __GET__|__PUT__|__PATCH__ `/user/{email}`
+- __GET__|__PATCH__ `/user/{email}`
 - __GET__|__POST__ `/user/meeting`
-- __GET__|__PUT__|__PATCH__|__DELETE__ `/user/meeting/{id}`
+- __GET__|__PATCH__|__DELETE__ `/user/meeting/{id}`
 - __POST__|__DELETE__ `/user/meeting/{id}/organizer/{email}`
 - __GET__|__POST__ `/user/meeting/{id}/question`
-- __PUT__|__PATCH__|__DELETE__ `/user/meeting/{id}/question/{id}`
+- __PATCH__|__DELETE__ `/user/meeting/{id}/question/{id}`
 - __GET__ `/meeting`
 - __GET__ `/meeting/{id}`
 - __POST__ `/meeting/{id}/signup`
