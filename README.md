@@ -41,7 +41,6 @@ API реализует функции создание, удаление и из
 - __GET__|__POST__ `/user/meeting/{id}/question`
 - __PATCH__|__DELETE__ `/user/meeting/{id}/question/{id}`
 - __GET__ `/user/meeting/{id}/visitor`
-- __GET__ `/user/meeting/{id}/visitor/{id}`
 - __GET__ `/meeting`
 - __GET__ `/meeting/{id}`
 - __POST__ `/meeting/{id}/signup`
@@ -57,4 +56,6 @@ API реализует функции создание, удаление и из
 - Добавление мероприятия в календарь
 - Указание адреса проведения мероприятия на картах
 - Telegram бот для регистрации в системе и на мероприятия
+- Формирование бэджа участника
+- Платные встречи
 - ...
