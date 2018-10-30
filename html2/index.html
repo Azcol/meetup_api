@@ -2643,6 +2643,33 @@ except ApiException as e:
                                 </div>
                             </div>
 
+                            <h3> Status: 401 - X-Auth-Key key is missing or invalid </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-userEmailGet-401-headers">Headers</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-userEmailGet-401-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>WWW_Authenticate</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
                             <h3> Status: 403 - Доступ запрещен </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
@@ -3547,7 +3574,7 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: default - Сессия пользователя прервана или не существует </h3>
+                            <h3> Status: default - Сессия пользователя прервана или не существует (удален токен авторизации) </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
