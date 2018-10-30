@@ -772,6 +772,102 @@
     }
   }
 };
+            defs.new_meeting = {
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "Название встречи"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Описание встречи"
+    },
+    "address" : {
+      "type" : "string",
+      "description" : "Описание места проведения встречи"
+    },
+    "signup_description" : {
+      "type" : "string",
+      "description" : "Описание регистрации на встречу"
+    },
+    "signup_from_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    },
+    "signup_to_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    },
+    "from_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    },
+    "to_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    },
+    "published" : {
+      "type" : "boolean",
+      "description" : "Признак доступности встречи в публичном каталоге"
+    }
+  }
+};
+            defs.new_question = {
+  "type" : "object",
+  "properties" : {
+    "meeting" : {
+      "type" : "integer",
+      "format" : "uint64"
+    },
+    "message" : {
+      "type" : "string",
+      "description" : "Текст вопроса"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Пояснения к вопросу"
+    },
+    "position" : {
+      "type" : "integer",
+      "description" : "Позиция вопроса в анкете",
+      "format" : "uint64"
+    },
+    "required" : {
+      "type" : "boolean",
+      "description" : "Признак обязательности ответа на вопрос для регистрация на встречу"
+    }
+  },
+  "description" : "Вопросы анкеты регистрации на встречу"
+};
+            defs.new_schedule = {
+  "type" : "object",
+  "properties" : {
+    "meeting" : {
+      "type" : "integer",
+      "format" : "uint64"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Описание этапа встречи"
+    },
+    "from_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    },
+    "to_date" : {
+      "type" : "integer",
+      "description" : "UTC timestamp",
+      "format" : "uint64"
+    }
+  },
+  "description" : "Этапы проведения встречи"
+};
             defs.organizer = {
   "type" : "object",
   "properties" : {
@@ -5374,7 +5470,7 @@ public class UserMeetingApiExample {
         //ApiKeyAuth.setApiKeyPrefix("Token");
 
         UserMeetingApi apiInstance = new UserMeetingApi();
-        Meeting body = ; // Meeting | 
+        New_meeting body = ; // New_meeting | 
         try {
             meeting result = apiInstance.userMeetingPost(body);
             System.out.println(result);
@@ -5393,7 +5489,7 @@ public class UserMeetingApiExample {
 
     public static void main(String[] args) {
         UserMeetingApi apiInstance = new UserMeetingApi();
-        Meeting body = ; // Meeting | 
+        New_meeting body = ; // New_meeting | 
         try {
             meeting result = apiInstance.userMeetingPost(body);
             System.out.println(result);
@@ -5414,7 +5510,7 @@ public class UserMeetingApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
-Meeting *body = ; // 
+New_meeting *body = ; // 
 
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
@@ -5442,7 +5538,7 @@ ApiKeyAuth.apiKey = "YOUR API KEY"
 //ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
-var body = ; // {{Meeting}} 
+var body = ; // {{New_meeting}} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -5478,7 +5574,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
 
             var apiInstance = new UserMeetingApi();
-            var body = new Meeting(); // Meeting | 
+            var body = new New_meeting(); // New_meeting | 
 
             try
             {
@@ -5506,7 +5602,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key',
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
 
 $api_instance = new Swagger\Client\Api{{classname}}();
-$body = ; // Meeting | 
+$body = ; // New_meeting | 
 
 try {
     $result = $api_instance->userMeetingPost($body);
@@ -5528,7 +5624,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
-my $body = WWW::SwaggerClient::Object::Meeting->new(); # Meeting | 
+my $body = WWW::SwaggerClient::Object::New_meeting->new(); # New_meeting | 
 
 eval { 
     my $result = $api_instance->userMeetingPost(body => $body);
@@ -5553,7 +5649,7 @@ swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
-body =  # Meeting | 
+body =  # New_meeting | 
 
 try: 
     # Создание новой встречи
@@ -8319,7 +8415,7 @@ public class UserMeetingQuestionApiExample {
         //ApiKeyAuth.setApiKeyPrefix("Token");
 
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
-        Question body = ; // Question | 
+        New_question body = ; // New_question | 
         Integer meetingId = 56; // Integer | id встречи
         try {
             question result = apiInstance.userMeetingMeetingIdQuestionPost(body, meetingId);
@@ -8339,7 +8435,7 @@ public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
-        Question body = ; // Question | 
+        New_question body = ; // New_question | 
         Integer meetingId = 56; // Integer | id встречи
         try {
             question result = apiInstance.userMeetingMeetingIdQuestionPost(body, meetingId);
@@ -8361,7 +8457,7 @@ public class UserMeetingQuestionApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
-Question *body = ; // 
+New_question *body = ; // 
 Integer *meetingId = 56; // id встречи
 
 UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
@@ -8391,7 +8487,7 @@ ApiKeyAuth.apiKey = "YOUR API KEY"
 //ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
-var body = ; // {{Question}} 
+var body = ; // {{New_question}} 
 var meetingId = 56; // {{Integer}} id встречи
 
 var callback = function(error, data, response) {
@@ -8428,7 +8524,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
 
             var apiInstance = new UserMeetingQuestionApi();
-            var body = new Question(); // Question | 
+            var body = new New_question(); // New_question | 
             var meetingId = 56;  // Integer | id встречи
 
             try
@@ -8457,7 +8553,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key',
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
 
 $api_instance = new Swagger\Client\Api{{classname}}();
-$body = ; // Question | 
+$body = ; // New_question | 
 $meetingId = 56; // Integer | id встречи
 
 try {
@@ -8480,7 +8576,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
-my $body = WWW::SwaggerClient::Object::Question->new(); # Question | 
+my $body = WWW::SwaggerClient::Object::New_question->new(); # New_question | 
 my $meetingId = 56; # Integer | id встречи
 
 eval { 
@@ -8506,7 +8602,7 @@ swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
-body =  # Question | 
+body =  # New_question | 
 meetingId = 56 # Integer | id встречи
 
 try: 
@@ -10226,7 +10322,7 @@ public class UserMeetingScheduleApiExample {
         //ApiKeyAuth.setApiKeyPrefix("Token");
 
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
-        Schedule body = ; // Schedule | 
+        New_schedule body = ; // New_schedule | 
         Integer meetingId = 56; // Integer | id встречи
         try {
             schedule result = apiInstance.userMeetingMeetingIdSchedulePost(body, meetingId);
@@ -10246,7 +10342,7 @@ public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
-        Schedule body = ; // Schedule | 
+        New_schedule body = ; // New_schedule | 
         Integer meetingId = 56; // Integer | id встречи
         try {
             schedule result = apiInstance.userMeetingMeetingIdSchedulePost(body, meetingId);
@@ -10268,7 +10364,7 @@ public class UserMeetingScheduleApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
-Schedule *body = ; // 
+New_schedule *body = ; // 
 Integer *meetingId = 56; // id встречи
 
 UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
@@ -10298,7 +10394,7 @@ ApiKeyAuth.apiKey = "YOUR API KEY"
 //ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
-var body = ; // {{Schedule}} 
+var body = ; // {{New_schedule}} 
 var meetingId = 56; // {{Integer}} id встречи
 
 var callback = function(error, data, response) {
@@ -10335,7 +10431,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
 
             var apiInstance = new UserMeetingScheduleApi();
-            var body = new Schedule(); // Schedule | 
+            var body = new New_schedule(); // New_schedule | 
             var meetingId = 56;  // Integer | id встречи
 
             try
@@ -10364,7 +10460,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key',
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
 
 $api_instance = new Swagger\Client\Api{{classname}}();
-$body = ; // Schedule | 
+$body = ; // New_schedule | 
 $meetingId = 56; // Integer | id встречи
 
 try {
@@ -10387,7 +10483,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
-my $body = WWW::SwaggerClient::Object::Schedule->new(); # Schedule | 
+my $body = WWW::SwaggerClient::Object::New_schedule->new(); # New_schedule | 
 my $meetingId = 56; # Integer | id встречи
 
 eval { 
@@ -10413,7 +10509,7 @@ swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
-body =  # Schedule | 
+body =  # New_schedule | 
 meetingId = 56 # Integer | id встречи
 
 try: 
