@@ -34,7 +34,7 @@ API реализует функции создание, удаление и из
 - __GET__|__PATCH__ `/user/{email}`
 - __GET__|__POST__ `/user/meeting`
 - __GET__|__PATCH__|__DELETE__ `/user/meeting/{id}`
-- __GET__ `/user/meeting/{id}/schedule`
+- __GET__|__POST__ `/user/meeting/{id}/schedule`
 - __GET__|__PATCH__|__DELETE__ `/user/meeting/{id}/schedule/{id}`
 - __POST__|__DELETE__ `/user/meeting/{id}/organizer/{email}`
 - __GET__|__POST__ `/user/meeting/{id}/question`
