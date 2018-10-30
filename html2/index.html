@@ -3277,9 +3277,28 @@ except ApiException as e:
                             <h3> Status: 204 - Авторизация прошла успешно </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-userLoginPost-204-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane" id="responses-userLoginPost-204-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Auth-Key</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
 
                             <h3> Status: 400 - Указаны неверные email и/или пароль </h3>
@@ -3793,6 +3812,9 @@ except ApiException as e:
                                   <a data-toggle="tab" href="#responses-userRegisterPost-201-schema">Schema</a>
                                 </li>
 
+                                <li class="">
+                                  <a data-toggle="tab" href="#responses-userRegisterPost-201-headers">Headers</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
@@ -3802,6 +3824,16 @@ except ApiException as e:
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "Пользователь зарегистрирован",
+  "headers" : {
+    "X-Auth-Key" : {
+      "description" : "Токен авторизации для использования в остальных запросах",
+      "style" : "simple",
+      "explode" : false,
+      "schema" : {
+        "type" : "string"
+      }
+    }
+  },
   "content" : {
     "application/json" : {
       "schema" : {
@@ -3830,6 +3862,22 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-userRegisterPost-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                                <div class="tab-pane" id="responses-userRegisterPost-201-headers">
+                                    <table>
+                                        <tr>
+                                            <th width="150px">Name</th>
+                                            <th width="100px">Type</th>
+                                            <th width="100px">Format</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Auth-Key</td>
+                                            <td>String</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
 
