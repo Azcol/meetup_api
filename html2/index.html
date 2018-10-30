@@ -1059,7 +1059,7 @@
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Meeting-meetingGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting?show="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting?show="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Meeting-meetingGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1073,7 +1073,14 @@ import java.util.*;
 public class MeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         MeetingApi apiInstance = new MeetingApi();
         String show = show_example; // String | фильтр встреч
         try {
@@ -1110,7 +1117,12 @@ public class MeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Meeting-meetingGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *show = show_example; // фильтр встреч (optional)
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+String *show = show_example; // фильтр встреч (optional)
 
 MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
@@ -1129,6 +1141,13 @@ MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-Meeting-meetingGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.MeetingApi()
 var opts = { 
@@ -1162,6 +1181,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new MeetingApi();
             var show = show_example;  // String | фильтр встреч (optional) 
 
@@ -1185,6 +1209,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $show = show_example; // String | фильтр встреч
 
@@ -1201,6 +1230,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::MeetingApi->new();
 my $show = show_example; # String | фильтр встреч
@@ -1220,6 +1254,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.MeetingApi()
@@ -1353,7 +1392,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Meeting-meetingIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1367,7 +1406,14 @@ import java.util.*;
 public class MeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         MeetingApi apiInstance = new MeetingApi();
         Integer id = 56; // Integer | id встречи
         try {
@@ -1404,7 +1450,12 @@ public class MeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *id = 56; // id встречи
 
 MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
@@ -1423,6 +1474,13 @@ MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.MeetingApi()
 var id = 56; // {{Integer}} id встречи
@@ -1455,6 +1513,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new MeetingApi();
             var id = 56;  // Integer | id встречи
 
@@ -1478,6 +1541,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $id = 56; // Integer | id встречи
 
@@ -1494,6 +1562,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::MeetingApi->new();
 my $id = 56; # Integer | id встречи
@@ -1513,6 +1586,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.MeetingApi()
@@ -1649,7 +1727,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Meeting-meetingIdRejectDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}/reject"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}/reject"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1663,7 +1741,14 @@ import java.util.*;
 public class MeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         MeetingApi apiInstance = new MeetingApi();
         Integer id = 56; // Integer | id встречи
         try {
@@ -1698,7 +1783,12 @@ public class MeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *id = 56; // id встречи
 
 MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
@@ -1714,6 +1804,13 @@ MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.MeetingApi()
 var id = 56; // {{Integer}} id встречи
@@ -1746,6 +1843,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new MeetingApi();
             var id = 56;  // Integer | id встречи
 
@@ -1768,6 +1870,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $id = 56; // Integer | id встречи
 
@@ -1783,6 +1890,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::MeetingApi->new();
 my $id = 56; # Integer | id встречи
@@ -1801,6 +1913,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.MeetingApi()
@@ -1897,7 +2014,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Meeting-meetingIdSignupPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}/signup"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}/signup"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Meeting-meetingIdSignupPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1911,7 +2028,14 @@ import java.util.*;
 public class MeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         MeetingApi apiInstance = new MeetingApi();
         array[survey_answer] body = ; // array[survey_answer] | 
         Integer id = 56; // Integer | id встречи
@@ -1948,7 +2072,12 @@ public class MeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Meeting-meetingIdSignupPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">array[survey_answer] *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+array[survey_answer] *body = ; // 
 Integer *id = 56; // id встречи
 
 MeetingApi *apiInstance = [[MeetingApi alloc] init];
@@ -1966,6 +2095,13 @@ MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-Meeting-meetingIdSignupPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.MeetingApi()
 var body = ; // {{array[survey_answer]}} 
@@ -1999,6 +2135,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new MeetingApi();
             var body = new array[survey_answer](); // array[survey_answer] | 
             var id = 56;  // Integer | id встречи
@@ -2022,6 +2163,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // array[survey_answer] | 
 $id = 56; // Integer | id встречи
@@ -2038,6 +2184,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::MeetingApi->new();
 my $body = [WWW::SwaggerClient::Object::array[survey_answer]->new()]; # array[survey_answer] | 
@@ -2057,6 +2208,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.MeetingApi()
@@ -2190,7 +2346,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userEmailGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/{email}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/{email}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-User-userEmailGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2204,7 +2360,14 @@ import java.util.*;
 public class UserApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserApi apiInstance = new UserApi();
         String email = email_example; // String | email пользователя
         try {
@@ -2241,7 +2404,12 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-userEmailGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *email = email_example; // email пользователя
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+String *email = email_example; // email пользователя
 
 UserApi *apiInstance = [[UserApi alloc] init];
 
@@ -2260,6 +2428,13 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-userEmailGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserApi()
 var email = email_example; // {{String}} email пользователя
@@ -2292,6 +2467,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserApi();
             var email = email_example;  // String | email пользователя
 
@@ -2315,6 +2495,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $email = email_example; // String | email пользователя
 
@@ -2331,6 +2516,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserApi->new();
 my $email = email_example; # String | email пользователя
@@ -2350,6 +2540,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserApi()
@@ -2491,7 +2686,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userEmailPatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/{email}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/{email}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-User-userEmailPatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2505,7 +2700,14 @@ import java.util.*;
 public class UserApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserApi apiInstance = new UserApi();
         User body = ; // User | 
         String email = email_example; // String | email пользователя
@@ -2544,7 +2746,12 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-userEmailPatch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">User *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+User *body = ; // 
 String *email = email_example; // email пользователя
 
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -2565,6 +2772,13 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-userEmailPatch-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserApi()
 var body = ; // {{User}} 
@@ -2598,6 +2812,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserApi();
             var body = new User(); // User | 
             var email = email_example;  // String | email пользователя
@@ -2622,6 +2841,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // User | 
 $email = email_example; // String | email пользователя
@@ -2639,6 +2863,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserApi->new();
 my $body = WWW::SwaggerClient::Object::User->new(); # User | 
@@ -2659,6 +2888,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserApi()
@@ -3091,7 +3325,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-userLogoutGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/logout"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/logout"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-User-userLogoutGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3105,7 +3339,14 @@ import java.util.*;
 public class UserApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserApi apiInstance = new UserApi();
         try {
             apiInstance.userLogoutGet();
@@ -3138,7 +3379,12 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-userLogoutGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+
 UserApi *apiInstance = [[UserApi alloc] init];
 
 // Завершение сессий в системе
@@ -3153,6 +3399,13 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-userLogoutGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserApi()
 var callback = function(error, data, response) {
@@ -3183,6 +3436,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserApi();
 
             try
@@ -3204,6 +3462,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 
 try {
@@ -3218,6 +3481,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserApi->new();
 
@@ -3235,6 +3503,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserApi()
@@ -3606,7 +3879,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeeting-userMeetingGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeeting-userMeetingGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3620,7 +3893,14 @@ import java.util.*;
 public class UserMeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingApi apiInstance = new UserMeetingApi();
         try {
             array[meeting] result = apiInstance.userMeetingGet();
@@ -3655,7 +3935,12 @@ public class UserMeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
 // Список созданных пользователем встреч
@@ -3673,6 +3958,13 @@ UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
 var callback = function(error, data, response) {
@@ -3703,6 +3995,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingApi();
 
             try
@@ -3725,6 +4022,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 
 try {
@@ -3740,6 +4042,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
 
@@ -3758,6 +4065,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
@@ -3864,7 +4176,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeeting-userMeetingIdDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeeting-userMeetingIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3878,7 +4190,14 @@ import java.util.*;
 public class UserMeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingApi apiInstance = new UserMeetingApi();
         Integer id = 56; // Integer | id встречи
         try {
@@ -3913,7 +4232,12 @@ public class UserMeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdDelete-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *id = 56; // id встречи
 
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
@@ -3929,6 +4253,13 @@ UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
 var id = 56; // {{Integer}} id встречи
@@ -3961,6 +4292,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingApi();
             var id = 56;  // Integer | id встречи
 
@@ -3983,6 +4319,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $id = 56; // Integer | id встречи
 
@@ -3998,6 +4339,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
 my $id = 56; # Integer | id встречи
@@ -4016,6 +4362,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
@@ -4112,7 +4463,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeeting-userMeetingIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeeting-userMeetingIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4126,7 +4477,14 @@ import java.util.*;
 public class UserMeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingApi apiInstance = new UserMeetingApi();
         Integer id = 56; // Integer | id встречи
         try {
@@ -4163,7 +4521,12 @@ public class UserMeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *id = 56; // id встречи
 
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
@@ -4182,6 +4545,13 @@ UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
 var id = 56; // {{Integer}} id встречи
@@ -4214,6 +4584,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingApi();
             var id = 56;  // Integer | id встречи
 
@@ -4237,6 +4612,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $id = 56; // Integer | id встречи
 
@@ -4253,6 +4633,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
 my $id = 56; # Integer | id встречи
@@ -4272,6 +4657,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
@@ -4408,7 +4798,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeeting-userMeetingIdPatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeeting-userMeetingIdPatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4422,7 +4812,14 @@ import java.util.*;
 public class UserMeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingApi apiInstance = new UserMeetingApi();
         Meeting body = ; // Meeting | 
         Integer id = 56; // Integer | id встречи
@@ -4461,7 +4858,12 @@ public class UserMeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdPatch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Meeting *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Meeting *body = ; // 
 Integer *id = 56; // id встречи
 
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
@@ -4482,6 +4884,13 @@ UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingIdPatch-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
 var body = ; // {{Meeting}} 
@@ -4515,6 +4924,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingApi();
             var body = new Meeting(); // Meeting | 
             var id = 56;  // Integer | id встречи
@@ -4539,6 +4953,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Meeting | 
 $id = 56; // Integer | id встречи
@@ -4556,6 +4975,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
 my $body = WWW::SwaggerClient::Object::Meeting->new(); # Meeting | 
@@ -4576,6 +5000,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
@@ -4746,7 +5175,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeeting-userMeetingPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeeting-userMeetingPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4760,7 +5189,14 @@ import java.util.*;
 public class UserMeetingApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingApi apiInstance = new UserMeetingApi();
         Meeting body = ; // Meeting | 
         try {
@@ -4797,7 +5233,12 @@ public class UserMeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Meeting *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Meeting *body = ; // 
 
 UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
@@ -4816,6 +5257,13 @@ UserMeetingApi *apiInstance = [[UserMeetingApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeeting-userMeetingPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingApi()
 var body = ; // {{Meeting}} 
@@ -4848,6 +5296,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingApi();
             var body = new Meeting(); // Meeting | 
 
@@ -4871,6 +5324,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Meeting | 
 
@@ -4887,6 +5345,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingApi->new();
 my $body = WWW::SwaggerClient::Object::Meeting->new(); # Meeting | 
@@ -4906,6 +5369,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingApi()
@@ -5054,7 +5522,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5068,7 +5536,14 @@ import java.util.*;
 public class UserMeetingOrganizerApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
         Integer meetingId = 56; // Integer | id встречи
         String email = email_example; // String | email соорганизатора
@@ -5105,7 +5580,12 @@ public class UserMeetingOrganizerApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 String *email = email_example; // email соорганизатора
 
 UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
@@ -5123,6 +5603,13 @@ UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -5156,6 +5643,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingOrganizerApi();
             var meetingId = 56;  // Integer | id встречи
             var email = email_example;  // String | email соорганизатора
@@ -5179,6 +5671,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $email = email_example; // String | email соорганизатора
@@ -5195,6 +5692,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -5214,6 +5716,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingOrganizerApi()
@@ -5336,7 +5843,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5350,7 +5857,14 @@ import java.util.*;
 public class UserMeetingOrganizerApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
         Integer meetingId = 56; // Integer | id встречи
         String email = email_example; // String | email соорганизатора
@@ -5389,7 +5903,12 @@ public class UserMeetingOrganizerApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 String *email = email_example; // email соорганизатора
 
 UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
@@ -5410,6 +5929,13 @@ UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -5443,6 +5969,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingOrganizerApi();
             var meetingId = 56;  // Integer | id встречи
             var email = email_example;  // String | email соорганизатора
@@ -5467,6 +5998,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $email = email_example; // String | email соорганизатора
@@ -5484,6 +6020,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -5504,6 +6045,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingOrganizerApi()
@@ -5674,7 +6220,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5688,7 +6234,14 @@ import java.util.*;
 public class UserMeetingOrganizerApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
         Integer meetingId = 56; // Integer | id встречи
         try {
@@ -5725,7 +6278,12 @@ public class UserMeetingOrganizerApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 
 UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
 
@@ -5744,6 +6302,13 @@ UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -5776,6 +6341,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingOrganizerApi();
             var meetingId = 56;  // Integer | id встречи
 
@@ -5799,6 +6369,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 
@@ -5815,6 +6390,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -5834,6 +6414,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingOrganizerApi()
@@ -5976,7 +6561,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5990,7 +6575,14 @@ import java.util.*;
 public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
         Integer meetingId = 56; // Integer | id встречи
         try {
@@ -6027,7 +6619,12 @@ public class UserMeetingQuestionApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 
 UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
@@ -6046,6 +6643,13 @@ UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -6078,6 +6682,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingQuestionApi();
             var meetingId = 56;  // Integer | id встречи
 
@@ -6101,6 +6710,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 
@@ -6117,6 +6731,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingQuestionApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -6136,6 +6755,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
@@ -6275,7 +6899,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6289,7 +6913,14 @@ import java.util.*;
 public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
         Integer meetingId = 56; // Integer | id встречи
         Integer id = 56; // Integer | id вопроса
@@ -6326,7 +6957,12 @@ public class UserMeetingQuestionApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdDelete-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id вопроса
 
 UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
@@ -6344,6 +6980,13 @@ UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -6377,6 +7020,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingQuestionApi();
             var meetingId = 56;  // Integer | id встречи
             var id = 56;  // Integer | id вопроса
@@ -6400,6 +7048,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $id = 56; // Integer | id вопроса
@@ -6416,6 +7069,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingQuestionApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -6435,6 +7093,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
@@ -6557,7 +7220,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6571,7 +7234,14 @@ import java.util.*;
 public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
         Integer meetingId = 56; // Integer | id встречи
         Integer id = 56; // Integer | id вопроса
@@ -6610,7 +7280,12 @@ public class UserMeetingQuestionApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id вопроса
 
 UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
@@ -6631,6 +7306,13 @@ UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -6664,6 +7346,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingQuestionApi();
             var meetingId = 56;  // Integer | id встречи
             var id = 56;  // Integer | id вопроса
@@ -6688,6 +7375,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $id = 56; // Integer | id вопроса
@@ -6705,6 +7397,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingQuestionApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -6725,6 +7422,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
@@ -6887,7 +7589,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdPatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdPatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6901,7 +7603,14 @@ import java.util.*;
 public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
         Question body = ; // Question | 
         Integer meetingId = 56; // Integer | id встречи
@@ -6942,7 +7651,12 @@ public class UserMeetingQuestionApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdPatch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Question *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Question *body = ; // 
 Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id вопроса
 
@@ -6965,6 +7679,13 @@ UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionIdPatch-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
 var body = ; // {{Question}} 
@@ -6999,6 +7720,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingQuestionApi();
             var body = new Question(); // Question | 
             var meetingId = 56;  // Integer | id встречи
@@ -7024,6 +7750,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Question | 
 $meetingId = 56; // Integer | id встречи
@@ -7042,6 +7773,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingQuestionApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
 my $body = WWW::SwaggerClient::Object::Question->new(); # Question | 
@@ -7063,6 +7799,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
@@ -7259,7 +8000,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/question"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7273,7 +8014,14 @@ import java.util.*;
 public class UserMeetingQuestionApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingQuestionApi apiInstance = new UserMeetingQuestionApi();
         Question body = ; // Question | 
         Integer meetingId = 56; // Integer | id встречи
@@ -7312,7 +8060,12 @@ public class UserMeetingQuestionApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Question *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Question *body = ; // 
 Integer *meetingId = 56; // id встречи
 
 UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
@@ -7333,6 +8086,13 @@ UserMeetingQuestionApi *apiInstance = [[UserMeetingQuestionApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingQuestion-userMeetingMeetingIdQuestionPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingQuestionApi()
 var body = ; // {{Question}} 
@@ -7366,6 +8126,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingQuestionApi();
             var body = new Question(); // Question | 
             var meetingId = 56;  // Integer | id встречи
@@ -7390,6 +8155,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Question | 
 $meetingId = 56; // Integer | id встречи
@@ -7407,6 +8177,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingQuestionApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingQuestionApi->new();
 my $body = WWW::SwaggerClient::Object::Question->new(); # Question | 
@@ -7427,6 +8202,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingQuestionApi()
@@ -7608,7 +8388,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7622,7 +8402,14 @@ import java.util.*;
 public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
         Integer meetingId = 56; // Integer | id встречи
         try {
@@ -7659,7 +8446,12 @@ public class UserMeetingScheduleApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 
 UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
@@ -7678,6 +8470,13 @@ UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -7710,6 +8509,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingScheduleApi();
             var meetingId = 56;  // Integer | id встречи
 
@@ -7733,6 +8537,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 
@@ -7749,6 +8558,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingScheduleApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -7768,6 +8582,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
@@ -7907,7 +8726,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7921,7 +8740,14 @@ import java.util.*;
 public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
         Integer meetingId = 56; // Integer | id встречи
         Integer id = 56; // Integer | id элемента расписания
@@ -7958,7 +8784,12 @@ public class UserMeetingScheduleApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdDelete-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id элемента расписания
 
 UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
@@ -7976,6 +8807,13 @@ UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -8009,6 +8847,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingScheduleApi();
             var meetingId = 56;  // Integer | id встречи
             var id = 56;  // Integer | id элемента расписания
@@ -8032,6 +8875,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $id = 56; // Integer | id элемента расписания
@@ -8048,6 +8896,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingScheduleApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -8067,6 +8920,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
@@ -8189,7 +9047,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8203,7 +9061,14 @@ import java.util.*;
 public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
         Integer meetingId = 56; // Integer | id встречи
         Integer id = 56; // Integer | id элемента расписания
@@ -8242,7 +9107,12 @@ public class UserMeetingScheduleApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id элемента расписания
 
 UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
@@ -8263,6 +9133,13 @@ UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -8296,6 +9173,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingScheduleApi();
             var meetingId = 56;  // Integer | id встречи
             var id = 56;  // Integer | id элемента расписания
@@ -8320,6 +9202,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $id = 56; // Integer | id элемента расписания
@@ -8337,6 +9224,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingScheduleApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -8357,6 +9249,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
@@ -8519,7 +9416,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdPatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdPatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8533,7 +9430,14 @@ import java.util.*;
 public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
         Schedule body = ; // Schedule | 
         Integer meetingId = 56; // Integer | id встречи
@@ -8574,7 +9478,12 @@ public class UserMeetingScheduleApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdPatch-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Schedule *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Schedule *body = ; // 
 Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id элемента расписания
 
@@ -8597,6 +9506,13 @@ UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdScheduleIdPatch-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
 var body = ; // {{Schedule}} 
@@ -8631,6 +9547,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingScheduleApi();
             var body = new Schedule(); // Schedule | 
             var meetingId = 56;  // Integer | id встречи
@@ -8656,6 +9577,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Schedule | 
 $meetingId = 56; // Integer | id встречи
@@ -8674,6 +9600,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingScheduleApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
 my $body = WWW::SwaggerClient::Object::Schedule->new(); # Schedule | 
@@ -8695,6 +9626,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
@@ -8891,7 +9827,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingSchedule-userMeetingMeetingIdSchedulePost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/schedule"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdSchedulePost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8905,7 +9841,14 @@ import java.util.*;
 public class UserMeetingScheduleApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingScheduleApi apiInstance = new UserMeetingScheduleApi();
         Schedule body = ; // Schedule | 
         Integer meetingId = 56; // Integer | id встречи
@@ -8944,7 +9887,12 @@ public class UserMeetingScheduleApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdSchedulePost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Schedule *body = ; // 
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Schedule *body = ; // 
 Integer *meetingId = 56; // id встречи
 
 UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
@@ -8965,6 +9913,13 @@ UserMeetingScheduleApi *apiInstance = [[UserMeetingScheduleApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingSchedule-userMeetingMeetingIdSchedulePost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingScheduleApi()
 var body = ; // {{Schedule}} 
@@ -8998,6 +9953,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingScheduleApi();
             var body = new Schedule(); // Schedule | 
             var meetingId = 56;  // Integer | id встречи
@@ -9022,6 +9982,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $body = ; // Schedule | 
 $meetingId = 56; // Integer | id встречи
@@ -9039,6 +10004,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingScheduleApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingScheduleApi->new();
 my $body = WWW::SwaggerClient::Object::Schedule->new(); # Schedule | 
@@ -9059,6 +10029,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingScheduleApi()
@@ -9240,7 +10215,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9254,7 +10229,14 @@ import java.util.*;
 public class UserMeetingVisitorApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
         Integer meetingId = 56; // Integer | id встречи
         try {
@@ -9291,7 +10273,12 @@ public class UserMeetingVisitorApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 
 UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
 
@@ -9310,6 +10297,13 @@ UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingVisitorApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -9342,6 +10336,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingVisitorApi();
             var meetingId = 56;  // Integer | id встречи
 
@@ -9365,6 +10364,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 
@@ -9381,6 +10385,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingVisitorApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingVisitorApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -9400,6 +10409,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingVisitorApi()
@@ -9539,7 +10553,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor/{id}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "X-Auth-Key: [[apiKey]]" "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9553,7 +10567,14 @@ import java.util.*;
 public class UserMeetingVisitorApiExample {
 
     public static void main(String[] args) {
-        
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
         UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
         Integer meetingId = 56; // Integer | id встречи
         Integer id = 56; // Integer | id участия во встрече
@@ -9592,7 +10613,12 @@ public class UserMeetingVisitorApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Auth-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Auth-Key"];
+Integer *meetingId = 56; // id встречи
 Integer *id = 56; // id участия во встрече
 
 UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
@@ -9613,6 +10639,13 @@ UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
 
                             <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+var defaultClient = IsPsystemMeetups.ApiClient.instance;
+
+// Configure API key authorization: ApiKeyAuth
+var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix['X-Auth-Key'] = "Token"
 
 var api = new IsPsystemMeetups.UserMeetingVisitorApi()
 var meetingId = 56; // {{Integer}} id встречи
@@ -9646,6 +10679,11 @@ namespace Example
         public void main()
         {
 
+            // Configure API key authorization: ApiKeyAuth
+            Configuration.Default.ApiKey.Add("X-Auth-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("X-Auth-Key", "Bearer");
+
             var apiInstance = new UserMeetingVisitorApi();
             var meetingId = 56;  // Integer | id встречи
             var id = 56;  // Integer | id участия во встрече
@@ -9670,6 +10708,11 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure API key authorization: ApiKeyAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Auth-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Auth-Key', 'Bearer');
+
 $api_instance = new Swagger\Client\Api{{classname}}();
 $meetingId = 56; // Integer | id встречи
 $id = 56; // Integer | id участия во встрече
@@ -9687,6 +10730,11 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserMeetingVisitorApi;
+
+# Configure API key authorization: ApiKeyAuth
+$WWW::SwaggerClient::Configuration::api_key->{'X-Auth-Key'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'X-Auth-Key'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserMeetingVisitorApi->new();
 my $meetingId = 56; # Integer | id встречи
@@ -9707,6 +10755,11 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+swagger_client.configuration.api_key['X-Auth-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['X-Auth-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = swagger_client.UserMeetingVisitorApi()
