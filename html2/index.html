@@ -776,8 +776,7 @@
   "type" : "object",
   "properties" : {
     "user" : {
-      "type" : "integer",
-      "format" : "uint64"
+      "$ref" : "#/components/schemas/user"
     },
     "meeting" : {
       "type" : "integer",
@@ -845,6 +844,20 @@
   },
   "description" : "Этапы проведения встречи"
 };
+            defs.survey_answer = {
+  "type" : "object",
+  "properties" : {
+    "question" : {
+      "type" : "integer",
+      "format" : "uint64"
+    },
+    "message" : {
+      "type" : "string",
+      "description" : "Ответ на вопрос"
+    }
+  },
+  "description" : "Ответы на вопросы анкеты"
+};
             defs.user = {
   "type" : "object",
   "properties" : {
@@ -872,8 +885,13 @@
       "format" : "uint64"
     },
     "user" : {
-      "type" : "integer",
-      "format" : "uint64"
+      "$ref" : "#/components/schemas/user"
+    },
+    "answer" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/answer"
+      }
     }
   },
   "description" : "Участники встречи"
@@ -895,6 +913,15 @@
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Meeting"><a href="#api-Meeting">API Methods - Meeting</a></li>
+                    <li data-group="Meeting" data-name="meetingGet" class="">
+                      <a href="#api-Meeting-meetingGet">meetingGet</a>
+                    </li>
+                    <li data-group="Meeting" data-name="meetingIdGet" class="">
+                      <a href="#api-Meeting-meetingIdGet">meetingIdGet</a>
+                    </li>
+                    <li data-group="Meeting" data-name="meetingIdRejectDelete" class="">
+                      <a href="#api-Meeting-meetingIdRejectDelete">meetingIdRejectDelete</a>
+                    </li>
                     <li data-group="Meeting" data-name="meetingIdSignupPost" class="">
                       <a href="#api-Meeting-meetingIdSignupPost">meetingIdSignupPost</a>
                     </li>
@@ -930,6 +957,16 @@
                     <li data-group="UserMeeting" data-name="userMeetingPost" class="">
                       <a href="#api-UserMeeting-userMeetingPost">userMeetingPost</a>
                     </li>
+                  <li class="nav-header" data-group="UserMeetingOrganizer"><a href="#api-UserMeetingOrganizer">API Methods - UserMeetingOrganizer</a></li>
+                    <li data-group="UserMeetingOrganizer" data-name="userMeetingMeetingIdOrganizerEmailDelete" class="">
+                      <a href="#api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete">userMeetingMeetingIdOrganizerEmailDelete</a>
+                    </li>
+                    <li data-group="UserMeetingOrganizer" data-name="userMeetingMeetingIdOrganizerEmailPost" class="">
+                      <a href="#api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost">userMeetingMeetingIdOrganizerEmailPost</a>
+                    </li>
+                    <li data-group="UserMeetingOrganizer" data-name="userMeetingMeetingIdOrganizerGet" class="">
+                      <a href="#api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet">userMeetingMeetingIdOrganizerGet</a>
+                    </li>
                   <li class="nav-header" data-group="UserMeetingQuestion"><a href="#api-UserMeetingQuestion">API Methods - UserMeetingQuestion</a></li>
                     <li data-group="UserMeetingQuestion" data-name="userMeetingMeetingIdQuestionGet" class="">
                       <a href="#api-UserMeetingQuestion-userMeetingMeetingIdQuestionGet">userMeetingMeetingIdQuestionGet</a>
@@ -962,6 +999,13 @@
                     <li data-group="UserMeetingSchedule" data-name="userMeetingMeetingIdSchedulePost" class="">
                       <a href="#api-UserMeetingSchedule-userMeetingMeetingIdSchedulePost">userMeetingMeetingIdSchedulePost</a>
                     </li>
+                  <li class="nav-header" data-group="UserMeetingVisitor"><a href="#api-UserMeetingVisitor">API Methods - UserMeetingVisitor</a></li>
+                    <li data-group="UserMeetingVisitor" data-name="userMeetingMeetingIdVisitorGet" class="">
+                      <a href="#api-UserMeetingVisitor-userMeetingMeetingIdVisitorGet">userMeetingMeetingIdVisitorGet</a>
+                    </li>
+                    <li data-group="UserMeetingVisitor" data-name="userMeetingMeetingIdVisitorIdGet" class="">
+                      <a href="#api-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet">userMeetingMeetingIdVisitorIdGet</a>
+                    </li>
           </ul>
         </nav>
       </div>
@@ -983,6 +1027,844 @@
         <div id="sections">
                 <section id="api-Meeting">
                   <h1>Meeting</h1>
+                    <div id="api-Meeting-meetingGet">
+                      <article id="api-Meeting-meetingGet-0" data-group="User" data-name="meetingGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>meetingGet</h1>
+                          <p>Список опубликованных встреч</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/meeting</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Meeting-meetingGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Meeting-meetingGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting?show="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Meeting-meetingGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.MeetingApi;
+
+import java.io.File;
+import java.util.*;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        
+        MeetingApi apiInstance = new MeetingApi();
+        String show = show_example; // String | фильтр встреч
+        try {
+            array[meeting] result = apiInstance.meetingGet(show);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Meeting-meetingGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.MeetingApi;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        MeetingApi apiInstance = new MeetingApi();
+        String show = show_example; // String | фильтр встреч
+        try {
+            array[meeting] result = apiInstance.meetingGet(show);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Meeting-meetingGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *show = show_example; // фильтр встреч (optional)
+
+MeetingApi *apiInstance = [[MeetingApi alloc] init];
+
+// Список опубликованных встреч
+[apiInstance meetingGetWith:show
+              completionHandler: ^(array[meeting] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.MeetingApi()
+var opts = { 
+  'show': show_example // {{String}} фильтр встреч
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.meetingGet(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Meeting-meetingGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class meetingGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new MeetingApi();
+            var show = show_example;  // String | фильтр встреч (optional) 
+
+            try
+            {
+                // Список опубликованных встреч
+                array[meeting] result = apiInstance.meetingGet(show);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling MeetingApi.meetingGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$show = show_example; // String | фильтр встреч
+
+try {
+    $result = $api_instance->meetingGet($show);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MeetingApi->meetingGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::MeetingApi;
+
+my $api_instance = WWW::SwaggerClient::MeetingApi->new();
+my $show = show_example; # String | фильтр встреч
+
+eval { 
+    my $result = $api_instance->meetingGet(show => $show);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MeetingApi->meetingGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.MeetingApi()
+show = show_example # String | фильтр встреч (optional)
+
+try: 
+    # Список опубликованных встреч
+    api_response = api_instance.meeting_get(show=show)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling MeetingApi->meetingGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">show</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_meetingGet_show">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        фильтр встреч
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Список встреч получен </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-meetingGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-meetingGet-200-schema">
+                                  <div id='responses-meetingGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Список встреч получен",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/meeting"
+        }
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-meetingGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-meetingGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-meetingGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Meeting-meetingIdGet">
+                      <article id="api-Meeting-meetingIdGet-0" data-group="User" data-name="meetingIdGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>meetingIdGet</h1>
+                          <p>Просмотр параметров встречи</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/meeting/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Meeting-meetingIdGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingIdGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingIdGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Meeting-meetingIdGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.MeetingApi;
+
+import java.io.File;
+import java.util.*;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        
+        MeetingApi apiInstance = new MeetingApi();
+        Integer id = 56; // Integer | id встречи
+        try {
+            visitor result = apiInstance.meetingIdGet(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.MeetingApi;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        MeetingApi apiInstance = new MeetingApi();
+        Integer id = 56; // Integer | id встречи
+        try {
+            visitor result = apiInstance.meetingIdGet(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+
+MeetingApi *apiInstance = [[MeetingApi alloc] init];
+
+// Просмотр параметров встречи
+[apiInstance meetingIdGetWith:id
+              completionHandler: ^(visitor output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.MeetingApi()
+var id = 56; // {{Integer}} id встречи
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.meetingIdGet(id, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Meeting-meetingIdGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class meetingIdGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new MeetingApi();
+            var id = 56;  // Integer | id встречи
+
+            try
+            {
+                // Просмотр параметров встречи
+                visitor result = apiInstance.meetingIdGet(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling MeetingApi.meetingIdGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$id = 56; // Integer | id встречи
+
+try {
+    $result = $api_instance->meetingIdGet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MeetingApi->meetingIdGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::MeetingApi;
+
+my $api_instance = WWW::SwaggerClient::MeetingApi->new();
+my $id = 56; # Integer | id встречи
+
+eval { 
+    my $result = $api_instance->meetingIdGet(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MeetingApi->meetingIdGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.MeetingApi()
+id = 56 # Integer | id встречи
+
+try: 
+    # Просмотр параметров встречи
+    api_response = api_instance.meeting_id_get(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling MeetingApi->meetingIdGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_meetingIdGet_id">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Параметры встречи получены </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-meetingIdGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-meetingIdGet-200-schema">
+                                  <div id='responses-meetingIdGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Параметры встречи получены",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/visitor"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-meetingIdGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-meetingIdGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-meetingIdGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Meeting-meetingIdRejectDelete">
+                      <article id="api-Meeting-meetingIdRejectDelete-0" data-group="User" data-name="meetingIdRejectDelete" data-version="0">
+                        <div class="pull-left">
+                          <h1>meetingIdRejectDelete</h1>
+                          <p>Отказ от участия во встрече</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/meeting/{id}/reject</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Meeting-meetingIdRejectDelete-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Meeting-meetingIdRejectDelete-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Meeting-meetingIdRejectDelete-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/meeting/{id}/reject"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.MeetingApi;
+
+import java.io.File;
+import java.util.*;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        
+        MeetingApi apiInstance = new MeetingApi();
+        Integer id = 56; // Integer | id встречи
+        try {
+            apiInstance.meetingIdRejectDelete(id);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingIdRejectDelete");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.MeetingApi;
+
+public class MeetingApiExample {
+
+    public static void main(String[] args) {
+        MeetingApi apiInstance = new MeetingApi();
+        Integer id = 56; // Integer | id встречи
+        try {
+            apiInstance.meetingIdRejectDelete(id);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MeetingApi#meetingIdRejectDelete");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+
+MeetingApi *apiInstance = [[MeetingApi alloc] init];
+
+// Отказ от участия во встрече
+[apiInstance meetingIdRejectDeleteWith:id
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.MeetingApi()
+var id = 56; // {{Integer}} id встречи
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.meetingIdRejectDelete(id, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class meetingIdRejectDeleteExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new MeetingApi();
+            var id = 56;  // Integer | id встречи
+
+            try
+            {
+                // Отказ от участия во встрече
+                apiInstance.meetingIdRejectDelete(id);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling MeetingApi.meetingIdRejectDelete: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$id = 56; // Integer | id встречи
+
+try {
+    $api_instance->meetingIdRejectDelete($id);
+} catch (Exception $e) {
+    echo 'Exception when calling MeetingApi->meetingIdRejectDelete: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::MeetingApi;
+
+my $api_instance = WWW::SwaggerClient::MeetingApi->new();
+my $id = 56; # Integer | id встречи
+
+eval { 
+    $api_instance->meetingIdRejectDelete(id => $id);
+};
+if ($@) {
+    warn "Exception when calling MeetingApi->meetingIdRejectDelete: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Meeting-meetingIdRejectDelete-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.MeetingApi()
+id = 56 # Integer | id встречи
+
+try: 
+    # Отказ от участия во встрече
+    api_instance.meeting_id_reject_delete(id)
+except ApiException as e:
+    print("Exception when calling MeetingApi->meetingIdRejectDelete: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_meetingIdRejectDelete_id">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 204 - Успешный отказ от участия во встрече </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Meeting-meetingIdSignupPost">
                       <article id="api-Meeting-meetingIdSignupPost-0" data-group="User" data-name="meetingIdSignupPost" data-version="0">
                         <div class="pull-left">
@@ -1031,9 +1913,10 @@ public class MeetingApiExample {
     public static void main(String[] args) {
         
         MeetingApi apiInstance = new MeetingApi();
+        array[survey_answer] body = ; // array[survey_answer] | 
         Integer id = 56; // Integer | id встречи
         try {
-            apiInstance.meetingIdSignupPost(id);
+            apiInstance.meetingIdSignupPost(body, id);
         } catch (ApiException e) {
             System.err.println("Exception when calling MeetingApi#meetingIdSignupPost");
             e.printStackTrace();
@@ -1049,9 +1932,10 @@ public class MeetingApiExample {
 
     public static void main(String[] args) {
         MeetingApi apiInstance = new MeetingApi();
+        array[survey_answer] body = ; // array[survey_answer] | 
         Integer id = 56; // Integer | id встречи
         try {
-            apiInstance.meetingIdSignupPost(id);
+            apiInstance.meetingIdSignupPost(body, id);
         } catch (ApiException e) {
             System.err.println("Exception when calling MeetingApi#meetingIdSignupPost");
             e.printStackTrace();
@@ -1064,12 +1948,14 @@ public class MeetingApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Meeting-meetingIdSignupPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *id = 56; // id встречи
+                              <pre class="prettyprint"><code class="language-cpp">array[survey_answer] *body = ; // 
+Integer *id = 56; // id встречи
 
 MeetingApi *apiInstance = [[MeetingApi alloc] init];
 
 // Подписка на встречу
-[apiInstance meetingIdSignupPostWith:id
+[apiInstance meetingIdSignupPostWith:body
+    id:id
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -1082,6 +1968,7 @@ MeetingApi *apiInstance = [[MeetingApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
 
 var api = new IsPsystemMeetups.MeetingApi()
+var body = ; // {{array[survey_answer]}} 
 var id = 56; // {{Integer}} id встречи
 
 var callback = function(error, data, response) {
@@ -1091,7 +1978,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.meetingIdSignupPost(id, callback);
+api.meetingIdSignupPost(body, id, callback);
 </code></pre>
                             </div>
 
@@ -1113,12 +2000,13 @@ namespace Example
         {
 
             var apiInstance = new MeetingApi();
+            var body = new array[survey_answer](); // array[survey_answer] | 
             var id = 56;  // Integer | id встречи
 
             try
             {
                 // Подписка на встречу
-                apiInstance.meetingIdSignupPost(id);
+                apiInstance.meetingIdSignupPost(body, id);
             }
             catch (Exception e)
             {
@@ -1135,10 +2023,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api{{classname}}();
+$body = ; // array[survey_answer] | 
 $id = 56; // Integer | id встречи
 
 try {
-    $api_instance->meetingIdSignupPost($id);
+    $api_instance->meetingIdSignupPost($body, $id);
 } catch (Exception $e) {
     echo 'Exception when calling MeetingApi->meetingIdSignupPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -1151,10 +2040,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MeetingApi;
 
 my $api_instance = WWW::SwaggerClient::MeetingApi->new();
+my $body = [WWW::SwaggerClient::Object::array[survey_answer]->new()]; # array[survey_answer] | 
 my $id = 56; # Integer | id встречи
 
 eval { 
-    $api_instance->meetingIdSignupPost(id => $id);
+    $api_instance->meetingIdSignupPost(body => $body, id => $id);
 };
 if ($@) {
     warn "Exception when calling MeetingApi->meetingIdSignupPost: $@\n";
@@ -1170,11 +2060,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.MeetingApi()
+body =  # array[survey_answer] | 
 id = 56 # Integer | id встречи
 
 try: 
     # Подписка на встречу
-    api_instance.meeting_id_signup_post(id)
+    api_instance.meeting_id_signup_post(body, id)
 except ApiException as e:
     print("Exception when calling MeetingApi->meetingIdSignupPost: %s\n" % e)</code></pre>
                             </div>
@@ -1216,11 +2107,44 @@ except ApiException as e:
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = ;
+                                  var schema = schemaWrapper.schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.definitions = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_meetingIdSignupPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_meetingIdSignupPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
 
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 204 - Параметры встречи </h3>
+                            <h3> Status: 204 - Успешная подписка на встречу </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -4090,6 +5014,928 @@ except ApiException as e:
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-UserMeetingOrganizer">
+                  <h1>UserMeetingOrganizer</h1>
+                    <div id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete">
+                      <article id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0" data-group="User" data-name="userMeetingMeetingIdOrganizerEmailDelete" data-version="0">
+                        <div class="pull-left">
+                          <h1>userMeetingMeetingIdOrganizerEmailDelete</h1>
+                          <p>Удаление соорганизатора</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/user/meeting/{meeting_id}/organizer/{email}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.UserMeetingOrganizerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        String email = email_example; // String | email соорганизатора
+        try {
+            apiInstance.userMeetingMeetingIdOrganizerEmailDelete(meetingId, email);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerEmailDelete");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserMeetingOrganizerApi;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        String email = email_example; // String | email соорганизатора
+        try {
+            apiInstance.userMeetingMeetingIdOrganizerEmailDelete(meetingId, email);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerEmailDelete");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+String *email = email_example; // email соорганизатора
+
+UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
+
+// Удаление соорганизатора
+[apiInstance userMeetingMeetingIdOrganizerEmailDeleteWith:meetingId
+    email:email
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
+var meetingId = 56; // {{Integer}} id встречи
+var email = email_example; // {{String}} email соорганизатора
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.userMeetingMeetingIdOrganizerEmailDelete(meetingId, email, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class userMeetingMeetingIdOrganizerEmailDeleteExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UserMeetingOrganizerApi();
+            var meetingId = 56;  // Integer | id встречи
+            var email = email_example;  // String | email соорганизатора
+
+            try
+            {
+                // Удаление соорганизатора
+                apiInstance.userMeetingMeetingIdOrganizerEmailDelete(meetingId, email);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserMeetingOrganizerApi.userMeetingMeetingIdOrganizerEmailDelete: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$meetingId = 56; // Integer | id встречи
+$email = email_example; // String | email соорганизатора
+
+try {
+    $api_instance->userMeetingMeetingIdOrganizerEmailDelete($meetingId, $email);
+} catch (Exception $e) {
+    echo 'Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailDelete: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
+my $meetingId = 56; # Integer | id встречи
+my $email = email_example; # String | email соорганизатора
+
+eval { 
+    $api_instance->userMeetingMeetingIdOrganizerEmailDelete(meetingId => $meetingId, email => $email);
+};
+if ($@) {
+    warn "Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailDelete: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailDelete-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.UserMeetingOrganizerApi()
+meetingId = 56 # Integer | id встречи
+email = email_example # String | email соорганизатора
+
+try: 
+    # Удаление соорганизатора
+    api_instance.user_meeting_meeting_id_organizer_email_delete(meetingId, email)
+except ApiException as e:
+    print("Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailDelete: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">meeting_id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdOrganizerEmailDelete_meetingId">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                                  <tr><td style="width:150px;">email*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdOrganizerEmailDelete_email">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+                                                      <span class="format">
+                                                          (email)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          email соорганизатора
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 204 - Cоорганизатор удален </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost">
+                      <article id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0" data-group="User" data-name="userMeetingMeetingIdOrganizerEmailPost" data-version="0">
+                        <div class="pull-left">
+                          <h1>userMeetingMeetingIdOrganizerEmailPost</h1>
+                          <p>Добавление соорганизатора к встрече</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/user/meeting/{meeting_id}/organizer/{email}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer/{email}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.UserMeetingOrganizerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        String email = email_example; // String | email соорганизатора
+        try {
+            organizer result = apiInstance.userMeetingMeetingIdOrganizerEmailPost(meetingId, email);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerEmailPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserMeetingOrganizerApi;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        String email = email_example; // String | email соорганизатора
+        try {
+            organizer result = apiInstance.userMeetingMeetingIdOrganizerEmailPost(meetingId, email);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerEmailPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+String *email = email_example; // email соорганизатора
+
+UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
+
+// Добавление соорганизатора к встрече
+[apiInstance userMeetingMeetingIdOrganizerEmailPostWith:meetingId
+    email:email
+              completionHandler: ^(organizer output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
+var meetingId = 56; // {{Integer}} id встречи
+var email = email_example; // {{String}} email соорганизатора
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.userMeetingMeetingIdOrganizerEmailPost(meetingId, email, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class userMeetingMeetingIdOrganizerEmailPostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UserMeetingOrganizerApi();
+            var meetingId = 56;  // Integer | id встречи
+            var email = email_example;  // String | email соорганизатора
+
+            try
+            {
+                // Добавление соорганизатора к встрече
+                organizer result = apiInstance.userMeetingMeetingIdOrganizerEmailPost(meetingId, email);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserMeetingOrganizerApi.userMeetingMeetingIdOrganizerEmailPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$meetingId = 56; // Integer | id встречи
+$email = email_example; // String | email соорганизатора
+
+try {
+    $result = $api_instance->userMeetingMeetingIdOrganizerEmailPost($meetingId, $email);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailPost: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
+my $meetingId = 56; # Integer | id встречи
+my $email = email_example; # String | email соорганизатора
+
+eval { 
+    my $result = $api_instance->userMeetingMeetingIdOrganizerEmailPost(meetingId => $meetingId, email => $email);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailPost: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerEmailPost-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.UserMeetingOrganizerApi()
+meetingId = 56 # Integer | id встречи
+email = email_example # String | email соорганизатора
+
+try: 
+    # Добавление соорганизатора к встрече
+    api_response = api_instance.user_meeting_meeting_id_organizer_email_post(meetingId, email)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerEmailPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">meeting_id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdOrganizerEmailPost_meetingId">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                                  <tr><td style="width:150px;">email*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdOrganizerEmailPost_email">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+                                                      <span class="format">
+                                                          (email)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          email соорганизатора
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 201 - Соорганизатор добавлен </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-userMeetingMeetingIdOrganizerEmailPost-201-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-userMeetingMeetingIdOrganizerEmailPost-201-schema">
+                                  <div id='responses-userMeetingMeetingIdOrganizerEmailPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Соорганизатор добавлен",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/organizer"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-userMeetingMeetingIdOrganizerEmailPost-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userMeetingMeetingIdOrganizerEmailPost-201-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-userMeetingMeetingIdOrganizerEmailPost-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Ошибки в параметрах соорганизатора </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet">
+                      <article id="api-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0" data-group="User" data-name="userMeetingMeetingIdOrganizerGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>userMeetingMeetingIdOrganizerGet</h1>
+                          <p>Списсок соорганизаторов встречи</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/user/meeting/{meeting_id}/organizer</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/organizer"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.UserMeetingOrganizerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        try {
+            array[organizer] result = apiInstance.userMeetingMeetingIdOrganizerGet(meetingId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserMeetingOrganizerApi;
+
+public class UserMeetingOrganizerApiExample {
+
+    public static void main(String[] args) {
+        UserMeetingOrganizerApi apiInstance = new UserMeetingOrganizerApi();
+        Integer meetingId = 56; // Integer | id встречи
+        try {
+            array[organizer] result = apiInstance.userMeetingMeetingIdOrganizerGet(meetingId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingOrganizerApi#userMeetingMeetingIdOrganizerGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+
+UserMeetingOrganizerApi *apiInstance = [[UserMeetingOrganizerApi alloc] init];
+
+// Списсок соорганизаторов встречи
+[apiInstance userMeetingMeetingIdOrganizerGetWith:meetingId
+              completionHandler: ^(array[organizer] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.UserMeetingOrganizerApi()
+var meetingId = 56; // {{Integer}} id встречи
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.userMeetingMeetingIdOrganizerGet(meetingId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class userMeetingMeetingIdOrganizerGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UserMeetingOrganizerApi();
+            var meetingId = 56;  // Integer | id встречи
+
+            try
+            {
+                // Списсок соорганизаторов встречи
+                array[organizer] result = apiInstance.userMeetingMeetingIdOrganizerGet(meetingId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserMeetingOrganizerApi.userMeetingMeetingIdOrganizerGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$meetingId = 56; // Integer | id встречи
+
+try {
+    $result = $api_instance->userMeetingMeetingIdOrganizerGet($meetingId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::UserMeetingOrganizerApi;
+
+my $api_instance = WWW::SwaggerClient::UserMeetingOrganizerApi->new();
+my $meetingId = 56; # Integer | id встречи
+
+eval { 
+    my $result = $api_instance->userMeetingMeetingIdOrganizerGet(meetingId => $meetingId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingOrganizer-userMeetingMeetingIdOrganizerGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.UserMeetingOrganizerApi()
+meetingId = 56 # Integer | id встречи
+
+try: 
+    # Списсок соорганизаторов встречи
+    api_response = api_instance.user_meeting_meeting_id_organizer_get(meetingId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserMeetingOrganizerApi->userMeetingMeetingIdOrganizerGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">meeting_id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdOrganizerGet_meetingId">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Список соорганизаторов получен </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-userMeetingMeetingIdOrganizerGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-userMeetingMeetingIdOrganizerGet-200-schema">
+                                  <div id='responses-userMeetingMeetingIdOrganizerGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Список соорганизаторов получен",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/organizer"
+        }
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-userMeetingMeetingIdOrganizerGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userMeetingMeetingIdOrganizerGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-userMeetingMeetingIdOrganizerGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                         </article>
@@ -7354,6 +9200,638 @@ except ApiException as e:
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-UserMeetingVisitor">
+                  <h1>UserMeetingVisitor</h1>
+                    <div id="api-UserMeetingVisitor-userMeetingMeetingIdVisitorGet">
+                      <article id="api-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0" data-group="User" data-name="userMeetingMeetingIdVisitorGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>userMeetingMeetingIdVisitorGet</h1>
+                          <p>Списсок участников встречи</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/user/meeting/{meeting_id}/visitor</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.UserMeetingVisitorApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserMeetingVisitorApiExample {
+
+    public static void main(String[] args) {
+        
+        UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
+        Integer meetingId = 56; // Integer | id встречи
+        try {
+            array[visitor] result = apiInstance.userMeetingMeetingIdVisitorGet(meetingId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingVisitorApi#userMeetingMeetingIdVisitorGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserMeetingVisitorApi;
+
+public class UserMeetingVisitorApiExample {
+
+    public static void main(String[] args) {
+        UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
+        Integer meetingId = 56; // Integer | id встречи
+        try {
+            array[visitor] result = apiInstance.userMeetingMeetingIdVisitorGet(meetingId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingVisitorApi#userMeetingMeetingIdVisitorGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+
+UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
+
+// Списсок участников встречи
+[apiInstance userMeetingMeetingIdVisitorGetWith:meetingId
+              completionHandler: ^(array[visitor] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.UserMeetingVisitorApi()
+var meetingId = 56; // {{Integer}} id встречи
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.userMeetingMeetingIdVisitorGet(meetingId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class userMeetingMeetingIdVisitorGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UserMeetingVisitorApi();
+            var meetingId = 56;  // Integer | id встречи
+
+            try
+            {
+                // Списсок участников встречи
+                array[visitor] result = apiInstance.userMeetingMeetingIdVisitorGet(meetingId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserMeetingVisitorApi.userMeetingMeetingIdVisitorGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$meetingId = 56; // Integer | id встречи
+
+try {
+    $result = $api_instance->userMeetingMeetingIdVisitorGet($meetingId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::UserMeetingVisitorApi;
+
+my $api_instance = WWW::SwaggerClient::UserMeetingVisitorApi->new();
+my $meetingId = 56; # Integer | id встречи
+
+eval { 
+    my $result = $api_instance->userMeetingMeetingIdVisitorGet(meetingId => $meetingId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.UserMeetingVisitorApi()
+meetingId = 56 # Integer | id встречи
+
+try: 
+    # Списсок участников встречи
+    api_response = api_instance.user_meeting_meeting_id_visitor_get(meetingId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">meeting_id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdVisitorGet_meetingId">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Список участников получен </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-userMeetingMeetingIdVisitorGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-userMeetingMeetingIdVisitorGet-200-schema">
+                                  <div id='responses-userMeetingMeetingIdVisitorGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Список участников получен",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/visitor"
+        }
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-userMeetingMeetingIdVisitorGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userMeetingMeetingIdVisitorGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-userMeetingMeetingIdVisitorGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet">
+                      <article id="api-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0" data-group="User" data-name="userMeetingMeetingIdVisitorIdGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>userMeetingMeetingIdVisitorIdGet</h1>
+                          <p>Параметры участника встречи</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/user/meeting/{meeting_id}/visitor/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/azcol/meetup/1.0.0/user/meeting/{meeting_id}/visitor/{id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.UserMeetingVisitorApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserMeetingVisitorApiExample {
+
+    public static void main(String[] args) {
+        
+        UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
+        Integer meetingId = 56; // Integer | id встречи
+        Integer id = 56; // Integer | id участия во встрече
+        try {
+            visitor result = apiInstance.userMeetingMeetingIdVisitorIdGet(meetingId, id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingVisitorApi#userMeetingMeetingIdVisitorIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserMeetingVisitorApi;
+
+public class UserMeetingVisitorApiExample {
+
+    public static void main(String[] args) {
+        UserMeetingVisitorApi apiInstance = new UserMeetingVisitorApi();
+        Integer meetingId = 56; // Integer | id встречи
+        Integer id = 56; // Integer | id участия во встрече
+        try {
+            visitor result = apiInstance.userMeetingMeetingIdVisitorIdGet(meetingId, id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserMeetingVisitorApi#userMeetingMeetingIdVisitorIdGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *meetingId = 56; // id встречи
+Integer *id = 56; // id участия во встрече
+
+UserMeetingVisitorApi *apiInstance = [[UserMeetingVisitorApi alloc] init];
+
+// Параметры участника встречи
+[apiInstance userMeetingMeetingIdVisitorIdGetWith:meetingId
+    id:id
+              completionHandler: ^(visitor output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var IsPsystemMeetups = require('is_psystem_meetups');
+
+var api = new IsPsystemMeetups.UserMeetingVisitorApi()
+var meetingId = 56; // {{Integer}} id встречи
+var id = 56; // {{Integer}} id участия во встрече
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.userMeetingMeetingIdVisitorIdGet(meetingId, id, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class userMeetingMeetingIdVisitorIdGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UserMeetingVisitorApi();
+            var meetingId = 56;  // Integer | id встречи
+            var id = 56;  // Integer | id участия во встрече
+
+            try
+            {
+                // Параметры участника встречи
+                visitor result = apiInstance.userMeetingMeetingIdVisitorIdGet(meetingId, id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserMeetingVisitorApi.userMeetingMeetingIdVisitorIdGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api{{classname}}();
+$meetingId = 56; // Integer | id встречи
+$id = 56; // Integer | id участия во встрече
+
+try {
+    $result = $api_instance->userMeetingMeetingIdVisitorIdGet($meetingId, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorIdGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::UserMeetingVisitorApi;
+
+my $api_instance = WWW::SwaggerClient::UserMeetingVisitorApi->new();
+my $meetingId = 56; # Integer | id встречи
+my $id = 56; # Integer | id участия во встрече
+
+eval { 
+    my $result = $api_instance->userMeetingMeetingIdVisitorIdGet(meetingId => $meetingId, id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorIdGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-UserMeetingVisitor-userMeetingMeetingIdVisitorIdGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.UserMeetingVisitorApi()
+meetingId = 56 # Integer | id встречи
+id = 56 # Integer | id участия во встрече
+
+try: 
+    # Параметры участника встречи
+    api_response = api_instance.user_meeting_meeting_id_visitor_id_get(meetingId, id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserMeetingVisitorApi->userMeetingMeetingIdVisitorIdGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">meeting_id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdVisitorIdGet_meetingId">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id встречи
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                                  <tr><td style="width:150px;">id*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_userMeetingMeetingIdVisitorIdGet_id">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                                      <span class="format">
+                                                          (uint64)
+                                                      </span>
+                                  
+                                                      <div class="inner description">
+                                                          id участия во встрече
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Параметры участника встречи получены </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-userMeetingMeetingIdVisitorIdGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-userMeetingMeetingIdVisitorIdGet-200-schema">
+                                  <div id='responses-userMeetingMeetingIdVisitorIdGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Параметры участника встречи получены",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/visitor"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-userMeetingMeetingIdVisitorIdGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userMeetingMeetingIdVisitorIdGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-userMeetingMeetingIdVisitorIdGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                         </article>
